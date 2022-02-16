@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function counTer(){
+            hour = hh.value
+            minutes = mm.value
+            seconds = ss.value
+
+
+            if (seconds > 0 ){
+                ss.value--
+            
+                setTimeout(counTer,1000)
+            }
+
+            else if(mm.value>0 && ss.value== 0){
+                ss.value = 59;
+                mm.value--
+                setTimeout(counTer,1000)
+            }
+
+            if(hh.value>0 && mm.value == 0 && ss.value == 0){
+                ss.value = 59
+                mm.value--
+                hh.value--
+                setTimeout(counTer,1000)
+            }
+            if(hh.value == 0 && mm.value == 0 && ss.value == 0){
+                var alarm = new Audio("alarm.mp3");
+                alarm.play();
+            }
+        }
+
+    </script>
+</head>
+<body>
+    <center>
+        <table>
+            <tr>
+                <td align="center" colspan="3" id="countd">Countdown Timer</td>
+            </tr>
+
+            <tr>
+                <td><input type="text" name="" id="hh" placeholder="hour"></td>
+                <td><input type="text" name="" id="mm" placeholder="minutes"></td>
+                <td><input type="text" name="" id="ss" placeholder="seconds"></td>
+            </tr>
+
+
+            <tr>
+                <td colspan="3" align="center"><button id="ct" onclick="counTer()">START COUNTING</button></td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
